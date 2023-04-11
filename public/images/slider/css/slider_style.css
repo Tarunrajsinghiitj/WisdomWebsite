@@ -32,8 +32,9 @@
     font-style: oblique;
     align-items: center;
     justify-content: center;
-    padding-left: 35%;
-    padding-right: 35%;
+    /* padding-left: 35%; */
+    /* padding-right: 35%; */
+    text-align: center;
     /* padding-top: 20px; */
     /* padding-bottom: 20px; */
     /* font-display:flex; */

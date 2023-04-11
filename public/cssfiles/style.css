@@ -488,8 +488,9 @@ button.toggle-btn-form {
   background: transparent;
 }
 .submit-btn{
-  width: 85%;
+  width: 65%;
   padding: 10px 30px;
+  margin-left: 15%;
   cursor: pointer;
   display: block;
   /* margin: auto; */
@@ -498,6 +499,8 @@ button.toggle-btn-form {
   border: 0;
   outline: none;
   border-radius: 30px;
+  font-weight: bold;
+
 }
 
 .check-box-form{
@@ -514,6 +517,7 @@ button.toggle-btn-form {
   left: 50px;
 }
 
+
 #register{
   left: 450px;
 }
@@ -528,3 +532,13 @@ button:focus {
   /* outline: 1px dotted; */
   /* outline: 5px auto -webkit-focus-ring-color; */
 /* } */ 
+
+
+
+
+/* css for Question upload page  */
+
+#quesup{
+  left: 15%;
+  top: 20%;
+}

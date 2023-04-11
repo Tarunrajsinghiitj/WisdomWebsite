@@ -25,7 +25,8 @@ Router.post('/registeruser',async(req,res)=>{
             const Userdata = new homeschema({
                 name: UserName,
                 email: EmailId,
-                password: password
+                password: password,
+                role:"student"
             })
             Userdata.save(err=>{
                 if(err){
@@ -59,19 +60,64 @@ Router.post('/registeruser',async(req,res)=>{
 
 //  SIGN IN // 
 
+// Router.post('/login',(req,res)=>{
+//     const {
+//         EmailId,
+//         UserName,
+//         password,
+//     } = req.body;
+//     try{
+//     homeschema.findOne({email:EmailId},(err,result)=>{
+//         // console.log(result);
+//         // if (err)    
+//         //     {
+//         //         res.render('logreg',{title : "tarun raj singh", name: "jai ho", password: '', email: ''})
+//         //     }
+//         if(EmailId === result.email && password === result.password)
+//             {
+//                 // console.log("success");
+//                 res.render('dashboard1',{name : result.name})
+//             }
+//         else{
+//             if(password != result.password)
+//                 {
+//                     res.render('logreg',{title : "", name: "", password: 'wrong password', email: ''})
+//                 }
+//             console.log(err);
+//         }
+//     })
+//     }
+//     catch(err){
+//         res.render('logreg',{title : "tarun raj singh", name: "jai ho", password: '', email: ''})
+//         console.log("error caught")
+//     }
+// })
+
+
+
+
 Router.post('/login',(req,res)=>{
     const {
         EmailId,
         UserName,
         password,
+        role,
     } = req.body;
 
-    homeschema.findOne({email:EmailId},(err,result)=>{
-        // console.log(result);
+    homeschema.findOne({email:EmailId})
+
+    .then((result)=>{
         if(EmailId === result.email && password === result.password)
             {
                 // console.log("success");
-                res.render('dashboard1',{name : result.name})
+                if(role == result.role && role == "teacher")
+                    {
+                        res.render('dashboard2',{name : result.name , result : result})
+                    }
+                else if (role == result.role && role == "student")
+                    {
+                        res.render('dashboard1',{name : result.name , result : result})
+                    }
             }
         else{
             if(password != result.password)
@@ -81,6 +127,33 @@ Router.post('/login',(req,res)=>{
             console.log(err);
         }
     })
+    .catch((err)=>{
+        res.render('logreg',{title : "tarun raj singh", name: "jai ho", password: '', email: ''})
+    })
+    // ,(err,result)=>{
+    //     // console.log(result);
+    //     // if (err)    
+    //     //     {
+    //     //         res.render('logreg',{title : "tarun raj singh", name: "jai ho", password: '', email: ''})
+    //     //     }
+    //     if(EmailId === result.email && password === result.password)
+    //         {
+    //             // console.log("success");
+    //             res.render('dashboard1',{name : result.name})
+    //         }
+    //     else{
+    //         if(password != result.password)
+    //             {
+    //                 res.render('logreg',{title : "", name: "", password: 'wrong password', email: ''})
+    //             }
+    //         console.log(err);
+    //     }
+    // })
+    // // catch(err){
+    // //     res.render('logreg',{title : "tarun raj singh", name: "jai ho", password: '', email: ''})
+    // //     console.log("error caught")
+    // // }
 })
+
 
 module.exports = Router;

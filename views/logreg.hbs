@@ -58,6 +58,11 @@
             </div>
             <form  action= "/login" method="post" id="login"class = "input-group">
                 <input type="text" name="UserName" class = "input-field" placeholder="Used Name" required>
+                <select name="role" class="input-field" placeholder="Login as">
+                    <option value="Select your role"> Select your role</option>
+                    <option value="teacher"> teacher</option>
+                    <option value="student"> student</option>
+                </select>
                 <input type="email" name="EmailId" class = "input-field" placeholder="Email Id" required>
                 <input type="password" name="password" class = "input-field" placeholder="Enter password" required>
                 <!-- <span class = "span-form">Remember password</span> -->

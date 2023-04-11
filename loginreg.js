@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 // const ejs = require('ejs');
 const hbs = require('hbs')
 const homeRouter = require('./routers/homerouter')
+const teacherRouter = require('./routers/teacherRouter')
 const port = process.env.PORT || 8080;
 const app = express();
 
@@ -30,5 +31,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use('/' , homeRouter);   // Use the page where we want to use the router , default i m using at index 
+app.use('/', teacherRouter);
 app.use(express.static('public'));
 app.listen(port);
